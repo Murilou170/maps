@@ -10,26 +10,32 @@ class InitialScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Google Maps'),
-        centerTitle: true,
-      ),
-      body: Center(
-        child: Column(
-          children: [
-            Container(
-              margin: EdgeInsets.only(top: 200),
-              width: 600,
-              height: 50,
-              color: Colors.orange,
-              child: Text('Buscando Profissional'),
-            ),
-            Container(
-              width: 600,
-              height: 400,
-              child: getMap(),
-            )
-          ],
+      body: NestedScrollView(
+        headerSliverBuilder: (context, innerBoxIsScrolled) => [
+          SliverAppBar(
+            title: Text('google maps'),
+            floating: true,
+            expandedHeight: 100,
+            forceElevated: innerBoxIsScrolled,
+          ),
+        ],
+        body: Center(
+          child: Column(
+            children: [
+              Container(
+                margin: EdgeInsets.only(top: 100),
+                width: 600,
+                height: 50,
+                color: Colors.orange,
+                child: Text('Buscando Profissional'),
+              ),
+              Container(
+                width: 600,
+                height: 400,
+                child: getMap(),
+              )
+            ],
+          ),
         ),
       ),
     );
